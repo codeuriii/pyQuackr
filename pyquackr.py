@@ -50,11 +50,9 @@ class PyQuackr:
     
 
     def get_latest_message(self, number: str):
-        backup = self.driver.current_url
         self.driver.get(f"https://quackr.io/temporary-numbers/{self.country}/{number}")
         self.wait.until(EC.visibility_of_element_located((by.xpath, '//*[@id="wrapper"]/div/main/messages/section/div/div/div/table/tbody/tr[1]/td[3]')))
         latest_item = self.driver.find_element(by.xpath, '//*[@id="wrapper"]/div/main/messages/section/div/div/div/table/tbody/tr[1]/td[3]')
         latest_message = latest_item.text
         
-        self.driver.get(backup)
         return latest_message
