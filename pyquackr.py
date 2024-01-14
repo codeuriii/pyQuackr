@@ -29,6 +29,7 @@ class PyQuackr:
             raise ValueError(f"{contry} is not in {pays}\nPlease select a valid country.")
         
         url = "https://quackr.io/temporary-numbers/" + contry
+        self.country = contry
         self.driver.get(url)
 
 
