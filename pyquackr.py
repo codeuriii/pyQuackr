@@ -32,11 +32,11 @@ class PyQuackr:
                 f"{contry} is not in {pays}\nPlease select a valid country."
             )
         
-        
         self.country = contry
 
 
     def get_temporary_numbers(self, lenght: int):
+        self.driver.get("https://quackr.io/temporary-numbers/" + self.country)
         box = self.driver.find_element(by.xpath, '//*[@id="wrapper"]/div/main/country-page/section/div/div[4]')
         all_nums = box.find_elements(by.tag_name, "a")
         all_hrefs = []
