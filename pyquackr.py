@@ -1,5 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.edge.options import Options
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from myby import by
 
 class PyQuackr:
@@ -12,6 +14,7 @@ class PyQuackr:
             options.add_argument("start-maximized")
 
         self.driver = webdriver.Edge(options=options)
+        self.wait = WebDriverWait(self.driver, 10)
 
     def select_country(self, contry: str):
         pays = [
@@ -50,6 +53,7 @@ class PyQuackr:
     def get_latest_message(self, number: str):
         backup = self.driver.current_url
         self.driver.get("https://quackr.io/temporary-numbers/" + self.country + "/" + number)
+        self.wait.until(EC.visibility_of_element_located((by.xpath, '//*[@id="wrapper"]/div/main/messages/section/div/div/div/table/tbody/tr[1]/td[3]')))
         latest_item = self.driver.find_element(by.xpath, '//*[@id="wrapper"]/div/main/messages/section/div/div/div/table/tbody/tr[1]/td[3]')
         latest_message = latest_item.text
         
