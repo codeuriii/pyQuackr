@@ -12,7 +12,6 @@ class PyQuackr:
             options.add_argument("start-maximized")
 
         self.driver = webdriver.Edge(options=options)
-        self.driver.get("https://quackr.io/")
 
     def select_country(self, contry: str):
         pays = [
