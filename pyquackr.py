@@ -33,4 +33,13 @@ class PyQuackr:
 
 
     def get_temporary_numbers(self, lenght: int):
-        pass
+        box = self.driver.find_element(by.xpath, '//*[@id="wrapper"]/div/main/country-page/section/div/div[4]')
+        all_nums = box.find_elements(by.tag_name, "a")
+        all_hrefs = []
+
+        for num in all_nums:
+            href = num.get_attribute("href")
+            href = href.split("/")[-1]
+            all_hrefs.append(href)
+        
+        return all_hrefs[:lenght]
