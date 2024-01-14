@@ -14,4 +14,6 @@ class PyQuackr:
         self.driver = webdriver.Edge(options=options)
         self.driver.get("https://quackr.io/")
 
+    def get_temporary_numbers(lenght: int):
+        print(lenght)
         
