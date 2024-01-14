@@ -26,7 +26,9 @@ class PyQuackr:
         ]
 
         if not contry in pays:
-            raise ValueError(f"{contry} is not in {pays}\nPlease select a valid country.")
+            raise ValueError(
+                f"{contry} is not in {pays}\nPlease select a valid country."
+            )
         
         url = "https://quackr.io/temporary-numbers/" + contry
         self.country = contry
@@ -44,3 +46,6 @@ class PyQuackr:
             all_hrefs.append(href)
         
         return all_hrefs[:lenght]
+    
+    def get_latest_message(self, number: int):
+        
