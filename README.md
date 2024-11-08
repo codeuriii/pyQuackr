@@ -1,3 +1,3 @@
 # pyQuackr
 
-dosent work because quackr is not longer free
+Doesnt work anymore because quackr is no longer free.
